@@ -22,9 +22,9 @@ class MainActivity : AppCompatActivity() {
         val usuario:String= etUsuario.text.toString()
         val clave:String= etClave.text.toString()
 
-        if (usuario == "947332996" && clave == "947332996"){
+        //if (usuario == "947332996" && clave == "947332996"){
             val intent = Intent(this, HomeActivity::class.java)
             startActivity(intent)
-        }
+        //}
     }
 }
