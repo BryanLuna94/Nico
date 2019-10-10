@@ -6,10 +6,11 @@ import android.widget.CalendarView
 import android.widget.TableLayout
 import android.widget.Toast
 import androidx.viewpager.widget.ViewPager
+import com.example.nico.fragments.FirstFragment
 
 import kotlinx.android.synthetic.main.activity_home.*
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), FirstFragment.Listener {
 
     lateinit var viewPagerAdapter : CalendarioPageAdapter
 
@@ -17,7 +18,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        viewPagerAdapter = CalendarioPageAdapter(supportFragmentManager)
+        viewPagerAdapter = CalendarioPageAdapter(supportFragmentManager, this)
         viewPager.setPagingEnabled(false)
         viewPager.offscreenPageLimit = 2
         viewPager.adapter = viewPagerAdapter
@@ -51,4 +52,9 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    override fun goToPage(pagina: Int) {
+
+        showFragment(pagina)
+
+    }
 }

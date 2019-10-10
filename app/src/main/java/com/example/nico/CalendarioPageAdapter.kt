@@ -7,7 +7,9 @@ import androidx.fragment.app.FragmentStatePagerAdapter
 import com.example.nico.fragments.FirstFragment
 import com.example.nico.fragments.SecondFragment
 
-class CalendarioPageAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
+class CalendarioPageAdapter(fm: FragmentManager?, listener: FirstFragment.Listener) : FragmentPagerAdapter(fm) {
+
+    val firsFragmentListener=listener
 
     var firstFragment: FirstFragment = FirstFragment.newInstance()
     var secondFragment: SecondFragment = SecondFragment.newInstance()
@@ -19,7 +21,10 @@ class CalendarioPageAdapter(fm: FragmentManager?) : FragmentPagerAdapter(fm) {
 
     override fun getItem(position: Int): Fragment? {
         return when(position){
-            FIRST_FRAGMENT -> { firstFragment }
+            FIRST_FRAGMENT -> {
+                firstFragment.listener = firsFragmentListener
+                firstFragment
+            }
             SECOND_FRAGMENT -> { secondFragment }
             THIRD_FRAGMENT -> { thirdFragment }
             else -> null
